@@ -1,10 +1,16 @@
+import { withProtected } from '@/hook/route'
 import Message from 'components/message'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Nav from 'components/Navbar'
 
 
-export default function Home() {
+
+function Home({ auth }) {
+
+  const { user } = auth
+
   return (
     <>
       <Head>
@@ -13,19 +19,22 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Nav />
       <section className='my-10 max-w-lg mx-auto'>
         <div className=" flex flex-col gap-y-10">
           <Link href='/message'>
-            <Message />
+            <Message user={user} />
           </Link>
 
+          {/* <Message />
           <Message />
           <Message />
           <Message />
-          <Message />
-          <Message />
+          <Message /> */}
         </div>
       </section>
     </>
   )
 }
+
+export default withProtected(Home)
