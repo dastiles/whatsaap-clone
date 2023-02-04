@@ -1,15 +1,18 @@
-import { withProtected } from '@/hook/route'
-import Message from 'components/message'
+import { withProtected, withPublic } from '@/hook/route'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import Nav from 'components/Navbar'
+import { AiOutlineCamera, AiOutlineFileGif, AiOutlineMessage, AiOutlineSearch, AiOutlineSend, AiOutlineSmile, AiOutlineZoomIn } from 'react-icons/ai'
+import Chats from 'components/chats'
+import ChatsLayout from 'components/ChatsLayout'
+import MobileChat from 'components/MobileChat'
+import MessageDesk from 'components/MessageDesk'
 
 
 
-function Home({ auth }) {
+export default function Home() {
 
-  const { user } = auth
+  //const { user } = auth
 
   return (
     <>
@@ -19,22 +22,16 @@ function Home({ auth }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Nav />
-      <section className='my-10 max-w-lg mx-auto'>
-        <div className=" flex flex-col gap-y-10">
-          <Link href='/message'>
-            <Message user={user} />
-          </Link>
+      <main className="bg-white min-h-screen relative flex justify-center items-center ">
+        <div className=" bg-white w-[95vw] md:w-[90vw] shadow-lg rounded-sm  h-[95vh]  relative flex">
+          <MobileChat />
+          <ChatsLayout />
 
-          {/* <Message />
-          <Message />
-          <Message />
-          <Message />
-          <Message /> */}
+          <MessageDesk />
         </div>
-      </section>
+      </main>
     </>
   )
 }
 
-export default withProtected(Home)
+//export default withPublic(Home)

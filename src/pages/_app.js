@@ -6,16 +6,17 @@ import AuthStateChanged from '@/layout/AuthStateChanged'
 
 export default function App({ Component,
   pageProps }) {
-  return (
-    <AuthProvider>
 
-      <AuthStateChanged>
-        <Component {...pageProps} />
-      </AuthStateChanged>
+  return <Component {...pageProps} />
+  //   <AuthProvider>
+
+  //     <AuthStateChanged>
+  //       <Component {...pageProps} />
+  //     </AuthStateChanged>
 
 
-    </AuthProvider>
-  )
+  //   </AuthProvider>
+  // )
 
 
 
